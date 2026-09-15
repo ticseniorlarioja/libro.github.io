@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Redireccionando...</title>
+    <script>
+        window.onload = function() {
+            // 1. Obtener el texto limpio que va después del signo '?' (ej: "juan")
+            const parametro = window.location.search.substring(1).toLowerCase().trim();
+
+            // 2. Definir a qué web externa va cada persona
+            const rutas = {
+                'juan': 'https://linkedin.com',
+                'maria': 'https://github.com',
+                'pedro': 'https://twitter.com'
+            };
+
+            // 3. Evaluar el parámetro y redirigir
+            if (parametro && rutas[parametro]) {
+                window.location.href = rutas[parametro];
+            } else {
+                // Mensaje en caso de que el nombre no esté registrado
+                document.getElementById("mensaje").innerText = "Usuario o destino no encontrado.";
+            }
+        };
+    </script>
+</head>
+<body>
+    <p id="mensaje">Redireccionando al sitio de interés, por favor espere...</p>
+</body>
+</html>
